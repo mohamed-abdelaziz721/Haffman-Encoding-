@@ -1,0 +1,305 @@
+\documentclass[14 pt,a4paper,double column]{article}
+\usepackage[T1]{fontenc}
+\usepackage[latin1,utf8]{inputenc}
+
+\usepackage{lmodern}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage[pdftex]{graphicx}  
+  
+\usepackage[english]{babel}
+\usepackage[tracking=true]{microtype}
+               
+  \lstset { %
+    language=C++,
+    backgroundcolor=\color{black!8}, % set backgroundcolor
+    basicstyle=\footnotesize,% basic font setting
+}                             
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+\usepackage{grffile}     
+
+\usepackage{tikz} %for flowchart creation
+\usetikzlibrary{matrix,shapes,arrows,positioning,chains} %for flowchart creation
+
+%\setlength{\parindent}{0pt}            
+%\setlength{\parindent}{1em}                                      
+
+\usepackage{bbm} %for use of identity-matrix
+\usepackage{dsfont}
+\usepackage[]{subfigure}
+\usepackage{verbatim} 
+\usepackage{color}
+\usepackage{hyperref}
+\usepackage{accents}
+\usepackage{textcomp}
+\usepackage{multirow}
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage[onehalfspacing]{setspace}
+
+\bibliographystyle{acm}
+
+%for two-page-layout: lines on the bottom of the page at same height
+
+
+\setlength{\columnsep}{30pt}
+
+\usepackage{geometry}
+\geometry{a4paper,left=25mm,right=25mm, top=25mm, bottom=25mm}
+\usepackage{setspace,multicol}
+\usepackage{graphicx}
+\doublespace
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage[none]{hyphenat}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead{}
+\fancyfoot{}
+\fancyhead[L]{Huffman Coding For Lossless Compression}
+\fancyhead[R]{Data structure \& algorithms}
+
+\begin{document}
+\begin{titlepage}
+\begin{figure}[t] 
+\includegraphics[width=3cm]{./1.png}
+\end{figure}
+\begin{picture}(100, 120)(-400, -140)
+\includegraphics[scale=.3]{3.png}
+\end{picture}
+
+\begin{center}
+
+\large \textbf{Data Structure \& algorithms}\\
+
+
+\line(1,0){400}\\
+\large \textbf{Huffman Coding For Lossless Compression}\\
+\line(1,0){400}\\
+
+\textbf{submitted to:}\\
+dr/Hesham Kandil\\
+
+\textbf{submitted by:}\\
+\textbf{Ramadan Ibrahim Moheyeldeen Ibrahim}\\ ramadan.ibrahem98@eng-st.cu.edu.eg   (52034)\\
+\textbf{Mohamed Abdelkarim Ibrahim Seyam} \\
+mohamed.seyam99@eng-st.cu.edu.eg     (52068)\\
+\textbf{Mohamed Ahmed Abdelaziz Ahmed}\\
+mohamed.ahmed997@eng-st.cu.edu.eg    (52062)\\
+\textbf{Abdelrahman AbuBakr mohamed}\\
+Abdelrhman.Fahmy99@eng-st.cu.edu.eg  (52041)\\
+\textbf{hamdy mohamed ahmed mohamed}\\
+hamdy.elshaer99@eng-st.cu.edu.eg     (52028)
+
+\end{center}
+\end{titlepage}
+\newpage
+\tableofcontents
+\newpage
+\section{Introduction}
+\subsection{Huffman Coding}
+Huffman code is a type of lossless data compression depend on optimal prefix code. It was created by David Huffman when he was a student at MIT in 1952.\\
+
+
+The output from the algorithm is a frequency table to show  probability of each value of the source symbol, Where the highest frequency value get fewer bits than less common values.\\
+
+
+Huffman encoding is not always optimal compression method, it is sometimes replaced with arithmetic coding or asymmetric numeral systems for a better compression ratio.\\
+\subsection{Technique}
+\subsubsection{Compression}
+the technique is to use a binary tree of leaf node or internal node. Leaf node contain the symbol and its frequency, leaf nodes are linked together to form an internal node (parent)that carry two children we use a priority queue to form the tree to assign the new codes to the symbols and help with the decompression process also. The following steps show how the tree is formed:
+
+
+\begin{itemize}
+    \item Create a leaf node and add it to the priority queue. 
+    \item If there is more than one node 
+        \begin{itemize}
+            \item Take the lowest frequency nodes from the queue.
+            \item Create internal node with the two nodes as children with a frequency equal the sum of them both.
+            \item Add the new node to the queue.
+        \end{itemize}
+    \item The remaining node is the root node.    
+\end{itemize}
+
+To know the corresponding codes for each symbol from Huffman tree we follow:
+\begin{itemize}
+    \item Traverse the tree starting from the root.
+    \item Make an array.
+    \item Moving to left write 0 to the array.
+    \item Moving to right write 1 to the array. 
+    \item Print the array when leaf is reached.
+\end{itemize}
+
+\subsubsection{Decompression}
+To retrieve the encoded data we need the Huffman tree which is reconstructed by the frequency table and we need the binary coded data.\\
+To find the corresponding symbol to the encoded bits we follow :
+\begin{itemize}
+    \item Traverse the tree starting from the root until you find a leaf.
+    \item Moving to left node if the current bit is 0.
+    \item Moving to right node if the current bit is 1. 
+    \item If leaf is reached we print the corresponding symbol.
+\end{itemize}
+
+
+\section{motivation} 
+the motivation behind choosing this project is knowing the secrets behind the data compression .how this huge data can be compressed into smaller files without losing any data?! it was a very interesting question and we need an answer so we choose this project.
+
+in addition ,this project add a lot to your programming skills .you gain knowledge about standard template library and its various containers like maps ,queues  ,vectors ....etc and you will know how it is powerful .also gain skills about data input and output stream and how you can read and write images in your project .\\
+handling many files together is anew skill added to your programming skills and implementation of trees and huffman algorithm is really useful.\\
+Graphical user interface is also really useful and intersting topic to dive in to make a very understable and clear application output for the users.
+\section{Resources}
+\subsection{Tools And Libraries }
+\begin{itemize}
+    \item \textbf{iostream} is used for commonly used functions like cout, cin, clog, cerr.
+    \item \textbf{fstream} is an input output stream class to operate on files. It contain \textbf{ifstream} and \textbf{ofstream} classes which are high level stream input output operation.
+     istringstream, ostringstream.
+    \item \textbf{stdint} declare sets of integer types having specified widths. It also define sets of macros that specify the limits of integer types.
+    \item \textbf{map} is an associative container to store elements in a mapped fashion. each element has a key and a mapped value.
+    \item \textbf{vector} is similar to a dynamic array with the ability to resize itself when an element is inserted or deleted. vector elements is placed in a contiguous storage so it could be accessed and traversed using iterator. 
+
+    \item \textbf{queue} is a container adaptor which operate in FIFO type of arrangement.
+    \item \textbf{algorithm} contain some of the most used algorithms on vectors and useful in competitive programming.
+    \item \textbf{bit set} is an array of bool . Each boolean value is not stored separately, but instead it is a bit set optimises the space that each boolean take to 1 bit space.
+    \item \textbf{bits/std c++} it includes every standard library to reduce time wasted doing chores and reduce all chore writing all necessary header files. 
+\end{itemize}
+\section{problems}
+there are many problems face us while working like 
+\begin{itemize}
+\item the main problem is dividing the work into the members.\\
+and we simply solved it by following the instructions introduced by ENG/Asem in discussion group.
+\item traversing down the tree to get the code words.\\
+as you traverse the right side and left side of each node until reach the leaf and give it its code word.
+and it is solved by the \textbf{recursion function}
+\item reading the file as binary and turn it to integer in your code and printing the file as binary
+\item construction of the tree\\
+the solution was very simple as it was clear explanation in the two supported files "introduction of algorithms and ..........."
+\item how to turn binary code and compress it in an integer values and visa versa .
+\item how to turn to the original construction from the binary coded \\
+we solve this by compare the code word i did previously with the file contain binary code.
+\end{itemize} 
+
+\section{user manual for the system }
+\begin{figure}[H] 
+\includegraphics[width= 1\textwidth,height=90mm]{./copmilation.jpeg}
+\caption{compilation}
+\end{figure}
+using g++ compiler to compile main.cpp IOstream.cpp and huffman.cpp as huffman.o 
+\begin{figure}[H] 
+\includegraphics[width= 1\textwidth,height=100mm]{./compression.jpeg}
+\caption{running \& compression}
+\end{figure}
+run the huffman.o and pass the pgm image from images directory
+\section{Results}
+\begin{figure}[H] 
+\includegraphics[width= 1\textwidth,height=90mm]{./decompression.jpeg}
+\caption{decompression}
+\end{figure}
+decompress the file by running huffman.o by passing the .huf and .frq files from encoded directory.
+\begin{figure}[H] 
+\includegraphics[width= 1\textwidth,height=90mm]{./freqtablefile.jpeg}
+\caption{encoded file}
+\end{figure}
+\begin{figure}[H] 
+\includegraphics[width= 1\textwidth,height=90mm]{./encodedfile.jpeg}
+\caption{frequency table}
+\end{figure}
+\begin{figure}[H]
+\includegraphics[width= 1\textwidth,height=120mm]{./6.jpeg}
+\caption{original image}
+\end{figure}
+\begin{figure}[H]
+\includegraphics[width= 1\textwidth]{./7.jpeg}
+\caption{error after decoding the encoded .huf and .freq files}
+
+\end{figure}
+After a couple of hours doing stress testing, i have found that the problem was not in the compression and decompression functions. But it was in the ios.
+we i stress tested the pgmRead, pgmWrite, freqRead, and freqWrite and they work just fine now.\\
+the problem right now is with the hufRead, and hufWrite functions.\\
+and we are  currently working on fixing them\\
+stress testing the functions output before writing them to files and after reading them from files\\
+the error in the freqRead was using this statment\\
+ \dots
+\begin{lstlisting}
+freq.insert(std::pair<uint8_t,int>(read.get(),read.get()));\end{lstlisting}
+\dots  replaced by 
+\begin{lstlisting}
+while(!read.eof())
+    {
+        read >> greyValue >> frequency;
+        for (int i = 0; i < frequency; i++)
+        {
+            freq[greyValue]++;
+        }
+    }
+\end{lstlisting}
+
+       
+   
+\section{Contribution}
+All the work was done in collaboration with the other members to be able to understand the whole picture. To work in such a connected project was a problem in its own way because each function depend on an output from another one.  
+
+\subsection{Ramadan Ibrahim}
+The leader of the team and was responsible for assigning the required functions for each team member and guidance through the whole project and also was supervising the work of all members and then was responsible for the final work on the file.\\
+main work:
+\begin{itemize}
+    \item Command line arguments for the coding and decoding.
+    \item Construction of the tree.
+    \item Huffman encoding and all its associated functions.
+    \item Write encoded file.
+    \item working on the GUI application
+    
+\end{itemize}
+
+
+\subsection{Mohamed seyam}
+main work:
+\begin{itemize}
+    \item Construct the traverse tree.
+    \item Decoding the frequency table and the encoded file for decompression.
+    \item Writing the \LaTeX file.
+\end{itemize}
+
+
+\subsection{Mohamed Ahmed}
+main work:
+\begin{itemize}
+    \item PGM read.
+    \item Calculate frequency  of each element. 
+    \item Write frequency table.
+    \item Writing the \LaTeX file.
+    \item working on the GUI application
+\end{itemize}
+
+
+\subsection{Hamdy Mohamed}
+main work:
+\begin{itemize}
+    \item PGM  convert from P5 to P2.
+    \item Reading and writing the PGM file.
+    \item Assist in frequency  calculations.
+\end{itemize}
+
+\subsection{Abdelrahman Abubakr}
+main work:
+\begin{itemize}
+    \item Huffman and iostream headers
+    \item Bit set and to\_decinal
+    \item GUI (still in progress)
+\end{itemize}
+\begin{thebibliography}{10}
+\bibitem{papersite} \href{URL}{https://www.geeksforgeeks.org/huffman-coding-using-priority-queue/}
+\bibitem{papersite} \href{URL}{https://github.com/cynricfu/huffman-coding}
+
+\bibitem{papersite} \href{URL}{https://www.geeksforgeeks.org/huffman-coding-greedy-algo-3/}
+
+\bibitem{papersite} \href{URL}{Cormen, Thomas H., and Thomas H. Cormen. Introduction to Algorithms. Cambridge, Mass: MIT Press, 2001.}
+
+\bibitem{papersite} \href{URL}{https://courses.engr.illinois.edu/cs225/sp2020/labs/huffman/}
+
+\bibitem{papersite} \href{URL}{https://www.geeksforgeeks.org/huffman-decoding/}
+
+\end{thebibliography}
+
+\end{document}

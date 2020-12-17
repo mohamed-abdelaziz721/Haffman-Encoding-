@@ -1,0 +1,12 @@
+P2 
+1080* 1920
+255
+RAMADAN IS SAD  255
+Azoz IS SAD  55
+Seyam IS SAD  128 
+HAMDY IS SAD 44
+ABUBAKR IS SAD  100
+
+Frequency
+Check overwrite
+After fix

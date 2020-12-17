@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/encodedfile">
+        <file>encoded file with overwrite/frequency table.huf</file>
+        <file>encoded file with overwrite/compressed .huf</file>
+    </qresource>
+</RCC>
